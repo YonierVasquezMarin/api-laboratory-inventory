@@ -110,3 +110,15 @@ En Windows:
 ```powershell
 mvnw.cmd spring-boot:run
 ```
+
+---
+
+# 📬 Colecciones de Postman
+
+Para ver las colecciones del API:
+
+1. Abrir **Postman**
+2. Crear un **nuevo Workspace**
+3. Como fuente de datos, elegir la **carpeta raíz** del proyecto (`api-laboratory-inventory`)
+
+Postman cargará automáticamente las colecciones y entornos definidos en la carpeta `postman/`.
