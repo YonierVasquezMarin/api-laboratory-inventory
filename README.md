@@ -88,6 +88,18 @@ spring init --name=api-laboratory-inventory --build=maven --java-version=21 --de
 
 ---
 
+# 🗄️ Base de datos
+
+La API lee la cadena de conexión desde variables de entorno del sistema (ámbito **Usuario** en Windows):
+
+| Variable | Descripción | Ejemplo |
+|----------|-------------|---------|
+| `DATABASE_URL` | JDBC URL completa | `jdbc:postgresql://ep-xxxx-xxx-apatdgea-pooler.c-7.us-east-1.aws.neon.tech` |
+| `DATABASE_USERNAME` | Usuario de la base de datos | `postgres` |
+| `DATABASE_PASSWORD` | Contraseña | *(tu contraseña)* |
+
+---
+
 # ▶️ Ejecución
 
 ## Desde VS Code (Spring Boot Extension Pack)
