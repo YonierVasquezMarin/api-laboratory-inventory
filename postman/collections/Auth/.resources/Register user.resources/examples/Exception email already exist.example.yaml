@@ -1,0 +1,33 @@
+$kind: http-example
+request:
+  url: "{{server-url}}/auth/register"
+  method: POST
+  body:
+    type: json
+    content: "{\r
+
+      \    \"firstName\": \"Juan\",\r
+
+      \    \"lastName\": \"Pérez\",\r
+
+      \    \"email\": \"juan@ejemplo.com\",\r
+
+      \    \"password\": \"miPassword123\"\r
+
+      }"
+response:
+  statusCode: 409
+  statusText: ""
+  headers:
+    content-type: application/json
+    transfer-encoding: chunked
+    date: Thu, 21 May 2026 22:31:52 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: json
+    content: |-
+      {
+        "message": "El correo electrónico ya está registrado: juan@ejemplo.com"
+      }
+order: 800854157794221
