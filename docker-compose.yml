@@ -1,0 +1,44 @@
+services:
+  api-laboratory-inventory:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: api-laboratory-inventory
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: development
+      DATABASE_URL: jdbc:postgresql://postgres:5432/laboratory_inventory
+      DATABASE_USERNAME: ${DATABASE_USERNAME:-postgres}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD:-postgres}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - laboratory-inventory-network
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: laboratory-inventory-db
+    environment:
+      POSTGRES_DB: laboratory_inventory
+      POSTGRES_USER: ${DATABASE_USERNAME:-postgres}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-postgres}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DATABASE_USERNAME:-postgres} -d laboratory_inventory"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - laboratory-inventory-network
+
+networks:
+  laboratory-inventory-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
