@@ -1,0 +1,37 @@
+$kind: http-example
+request:
+  url: "{{server-url}}/auth/register"
+  method: POST
+  body:
+    type: json
+    content: "{\r
+
+      \  \"firstName\": \"Juan\",\r
+
+      \  \"lastName\": \"Pérez\",\r
+
+      \  \"email\": \"juan@ejemplo.com\",\r
+
+      \  \"password\": \"miPassword123\"\r
+
+      }"
+response:
+  statusCode: 201
+  statusText: ""
+  headers:
+    content-type: application/json
+    transfer-encoding: chunked
+    date: Thu, 21 May 2026 22:25:23 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: json
+    content: |-
+      {
+        "id": 1,
+        "firstName": "Juan",
+        "lastName": "Pérez",
+        "email": "juan@ejemplo.com",
+        "createdAt": "2026-05-21T22:25:23.646046Z"
+      }
+order: 1779402369535
